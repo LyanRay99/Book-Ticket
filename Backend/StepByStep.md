@@ -13,3 +13,20 @@
 - Khởi tạo project với sequelize
 
 `npx sequelize-cli init`
+
+# Thao tác Sequelize-CLI
+
+## Create model
+
+`npx sequelize model:generate --name Station --attributes name:string,address:string,province:string`
+
+- Ở dây nó sẽ tạo ra model tại folder _migrations_
+- Với các thuộc tính name, address, province
+
+## Sync table into Database
+
+- create table
+  `npx sequelize db:migrate`
+
+- Delete table
+  `npx sequelize db:migrate undo`
