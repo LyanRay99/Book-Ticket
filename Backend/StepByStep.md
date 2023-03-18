@@ -40,7 +40,7 @@
 _Modal_: data table mà ta đã tạo
 _Migration_: đồng bộ lưu các edit mà ta đã thực hiện với database để có thể undo lại khi cần
 
-Ctrl + Z: `npx sequelize db:migrate undo`
+Ctrl + Z: `npx sequelize db:migrate:undo`
 
 Ctrl + Y : `npx sequelize db:migrate`
 
