@@ -7,9 +7,9 @@ const userRouter = express.Router();
 const { C_register, C_login } = require("../Controllers/user.controller");
 
 //* Middleware
-// const { checkID } = require("../Middlewares/Middleware");
+const { checkEmailExist } = require("../Middlewares/validations/Middleware");
 
-userRouter.post(`/register`, C_register);
+userRouter.post(`/register`, checkEmailExist, C_register);
 userRouter.post(`/login`, C_login);
 // stationRouter.get(`${stationPath}/:id`, checkID, C_getStationDetail);
 // stationRouter.put(`${stationPath}/:id`, checkID, C_updateStation);

@@ -7,7 +7,7 @@ const { Users } = require("../models");
 
 //* register
 const C_register = async (req, res) => {
-  const { name, email, password, numberPhone } = req.body;
+  const { name, email, password, numberPhone, type } = req.body;
   try {
     //* tạo 1 chuỗi mã hóa để bảo mật password hơn
     const salt = bcrypt.genSaltSync(10);
@@ -20,7 +20,7 @@ const C_register = async (req, res) => {
       email,
       password: hashPassword,
       numberPhone,
-      type: "Clients",
+      type,
     });
     res.status(201).send(newUser);
   } catch (error) {

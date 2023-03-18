@@ -1,6 +1,7 @@
 const JWT = require("jsonwebtoken");
 
 /**
+ * * check user's logged in ?
  *
  * @logic
  * * Lấy token mà user gửi lên để check authen
@@ -15,7 +16,8 @@ const authentication = async (req, res, next) => {
 
   try {
     const isAuthen = JWT.verify(token, "taidn99");
-    console.log(req.user);
+    req.user = isAuthen;
+
     isAuthen
       ? next()
       : res.status(401).send({ message: "You are not logged in" });
