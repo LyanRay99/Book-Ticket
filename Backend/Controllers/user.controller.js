@@ -1,5 +1,6 @@
 //* Library
 const bcrypt = require("bcrypt");
+const JWT = require("jsonwebtoken");
 
 //* import model Users
 const { Users } = require("../models");
@@ -42,8 +43,13 @@ const C_login = async (req, res) => {
     //* vì ta đã mã hóa password khi user register nên ta cần dùng bcrypt.compareSync() để ktr password có đúng ko?
     const isAuthentication = bcrypt.compareSync(password, user.password);
 
+    //* create token by jsonwebtoken package
+    const token = JWT.sign({ email: user.email, type: user.type }, "taidn99", {
+      expiresIn: 60 * 60,
+    });
+
     isAuthentication
-      ? res.status(200).send({ message: "Successfully Login" })
+      ? res.status(200).send({ message: "Successfully Login", token: token })
       : res.status(404).send({ message: "Incorrect Password" });
   } catch (error) {
     res.status(500).send({ message: "Not Found Email" });
