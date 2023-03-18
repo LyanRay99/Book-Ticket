@@ -1,4 +1,4 @@
-const { Station } = require("../models");
+const { Station } = require("../../models");
 
 const checkID = async (req, res, next) => {
   const { id } = req.params;

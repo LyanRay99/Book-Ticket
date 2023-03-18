@@ -13,13 +13,14 @@ const {
 } = require("../Controllers/station.controller");
 
 //* Middleware
-const { checkID } = require("../Middlewares/Middleware");
+const { checkID } = require("../Middlewares/validations/Middleware");
+const { authentication } = require("../Middlewares/auth/authentication");
 
-stationRouter.post("/", C_createStation);
+stationRouter.post("/", authentication, C_createStation);
 stationRouter.get("/", C_getStation);
 stationRouter.get(`/:id`, checkID, C_getStationDetail);
-stationRouter.put(`/:id`, checkID, C_updateStation);
-stationRouter.delete(`/:id`, checkID, C_deleteStation);
+stationRouter.put(`/:id`, authentication, checkID, C_updateStation);
+stationRouter.delete(`/:id`, authentication, checkID, C_deleteStation);
 
 module.exports = {
   stationRouter,
