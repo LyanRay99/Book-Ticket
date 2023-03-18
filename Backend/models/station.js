@@ -1,5 +1,8 @@
 "use strict";
+
 const { Model } = require("sequelize");
+const { cities } = require("../Constants/cities.constant");
+
 module.exports = (sequelize, DataTypes) => {
   class Station extends Model {
     /**
@@ -13,9 +16,34 @@ module.exports = (sequelize, DataTypes) => {
   }
   Station.init(
     {
-      name: { type: DataTypes.STRING, allowNull: false },
-      address: { type: DataTypes.STRING, allowNull: false },
-      province: { type: DataTypes.STRING, allowNull: false },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [3, 30],
+          notEmpty: true,
+        },
+      },
+      address: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          checkLength(value) {
+            if (value.length >= 5 && value.length <= 20) {
+              return true;
+            } else {
+              throw new Error("do dai phai tu 5 - 20");
+            }
+          },
+        },
+      },
+      province: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isIn: [cities],
+        },
+      },
     },
     {
       sequelize,
