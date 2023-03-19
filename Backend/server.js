@@ -17,7 +17,7 @@ app.use("/Public", express.static(publicPath));
 app.use("/api/v1", rootRouter);
 
 app.listen(port, async () => {
-  console.log(`server's runing in port ${port}`);
+  console.log(`server's running in port ${port}`);
 
   try {
     await sequelize.authenticate();

@@ -1,6 +1,9 @@
 const express = require("express");
 const multer = require("multer");
 
+//* model
+const { User } = require("../models");
+
 //* routers
 const userRouter = express.Router();
 

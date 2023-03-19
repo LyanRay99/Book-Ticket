@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Trip.init(
     {
-      starTime: {
-        type: DataTypes.STRING,
+      startTime: {
+        type: DataTypes.DATE,
         allowNull: false,
       },
       price: {

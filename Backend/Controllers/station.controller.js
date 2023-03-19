@@ -41,7 +41,7 @@ const C_getStationDetail = async (req, res) => {
         id,
       },
     });
-    res.status(201).send(station);
+    res.status(200).send(station);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -79,7 +79,7 @@ const C_deleteStation = async (req, res) => {
         id,
       },
     });
-    res.status(201).send(`deleted Station have id: ${id}`);
+    res.status(200).send(`deleted Station have id: ${id}`);
   } catch (error) {
     res.status(500).send(error);
   }

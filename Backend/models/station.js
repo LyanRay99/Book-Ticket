@@ -38,7 +38,9 @@ module.exports = (sequelize, DataTypes) => {
             if (value.length >= 5 && value.length <= 20) {
               return true;
             } else {
-              throw new Error("do dai phai tu 5 - 20");
+              throw new Error(
+                "Length address of station must from 5 to 20 character"
+              );
             }
           },
         },

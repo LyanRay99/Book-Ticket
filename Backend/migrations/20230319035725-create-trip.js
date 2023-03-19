@@ -11,6 +11,7 @@ module.exports = {
       },
       fromStation: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: "stations",
           key: "id",
@@ -18,16 +19,19 @@ module.exports = {
       },
       toStation: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: "stations",
           key: "id",
         },
       },
-      starTime: {
-        type: Sequelize.STRING,
+      startTime: {
+        type: Sequelize.DATE,
+        allowNull: false,
       },
       price: {
         type: Sequelize.FLOAT,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

@@ -3,7 +3,6 @@
  */
 const M_authorize = async (req, res, next) => {
   const { user } = req;
-  console.log(user);
 
   //* check role của user có là Admin không
   if (["Admin"].findIndex((ele) => ele === user.type) > -1) {

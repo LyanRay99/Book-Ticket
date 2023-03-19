@@ -1,5 +1,8 @@
 const express = require("express");
 
+//* model
+const { Station } = require("../models");
+
 //* routers
 const stationRouter = express.Router();
 
@@ -19,19 +22,19 @@ const { M_authorize } = require("../Middlewares/auth/authorize");
 
 stationRouter.post("/", M_authentication, M_authorize, C_createStation);
 stationRouter.get("/", C_getStation);
-stationRouter.get(`/:id`, M_checkID, C_getStationDetail);
+stationRouter.get(`/:id`, M_checkID(Station), C_getStationDetail);
 stationRouter.put(
   `/:id`,
   M_authentication,
   M_authorize,
-  M_checkID,
+  M_checkID(Station),
   C_updateStation
 );
 stationRouter.delete(
   `/:id`,
   M_authentication,
   M_authorize,
-  M_checkID,
+  M_checkID(Station),
   C_deleteStation
 );
 

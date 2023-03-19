@@ -84,7 +84,7 @@ const C_uploadAvatar = async (req, res, next) => {
   userInfo.avatar = urlImg;
   await userInfo.save();
 
-  res.send({
+  res.status(200).send({
     message: "feature upload avatar",
     user: userInfo,
     file: file,

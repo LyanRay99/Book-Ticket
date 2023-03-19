@@ -2,10 +2,10 @@ const { Station } = require("../../models");
 const { Users } = require("../../models");
 
 //* checkID to Get data detail & update & delete
-const M_checkID = async (req, res, next) => {
+const M_checkID = (Model) => async (req, res, next) => {
   const { id } = req.params;
 
-  const check = await Station.findOne({
+  const check = await Model.findOne({
     where: {
       id,
     },
