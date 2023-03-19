@@ -39,6 +39,8 @@ tripRouter.put(
   M_authentication,
   M_authorize,
   M_checkID(Trip),
+  M_checkIdStation(),
+  checkStartTime(),
   C_updateTrip
 );
 tripRouter.delete(
