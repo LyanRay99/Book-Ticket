@@ -22,7 +22,7 @@ userRouter.post(`/login`, C_login);
 userRouter.post(
   `/upload-avatar`,
   M_authentication,
-  M_uploadAvatar(),
+  M_uploadAvatar("Avatar"),
   C_uploadAvatar
 );
 

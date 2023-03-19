@@ -1,13 +1,17 @@
 //* Library
 const multer = require("multer");
+const mkdirp = require("mkdirp");
 
 //* upload avatar
-const M_uploadAvatar = (req, res, next) => {
+const M_uploadAvatar = (type) => {
+  //* create folder before save image
+  const createFolder = mkdirp.sync(`./Public/Images/${type}`);
+
   //* khai báo storage engine của Multer
   const storage = multer.diskStorage({
     //* setup path save image
     destination: (req, res, callback) => {
-      callback(null, "./Public/Images/Avatars");
+      callback(null, `./Public/Images/${type}`);
     },
 
     //* set name of image
@@ -36,8 +40,7 @@ const M_uploadAvatar = (req, res, next) => {
     },
   });
 
-  //   next();
-  return upload.single("avatar");
+  return upload.single(type);
 };
 
 module.exports = {
