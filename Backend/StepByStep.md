@@ -30,7 +30,7 @@
   `npx sequelize db:migrate`
 
 - Delete table
-  `npx sequelize db:migrate undo`
+  `npx sequelize db:migrate:undo`
 
 # Seeder && Migration
 

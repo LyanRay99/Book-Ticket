@@ -1,6 +1,7 @@
 //* Library
 const bcrypt = require("bcrypt");
 const JWT = require("jsonwebtoken");
+const gravatar = require("gravatar");
 
 //* import model Users
 const { Users } = require("../models");
@@ -11,6 +12,7 @@ const { url } = require("../Constants/constants");
 //* register
 const C_register = async (req, res) => {
   const { name, email, password, numberPhone, type } = req.body;
+
   try {
     //* tạo 1 chuỗi mã hóa để bảo mật password hơn
     const salt = bcrypt.genSaltSync(10);
@@ -18,13 +20,18 @@ const C_register = async (req, res) => {
     //* mã hóa salt + password
     const hashPassword = bcrypt.hashSync(password, salt);
 
+    //* create image default
+    const userAvatar = gravatar.url(email);
+
     const newUser = await Users.create({
       name,
       email,
       password: hashPassword,
       numberPhone,
       type,
+      avatar: userAvatar,
     });
+
     res.status(201).send(newUser);
   } catch (error) {
     res.status(500).send(error);
