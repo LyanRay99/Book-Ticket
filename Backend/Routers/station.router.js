@@ -13,19 +13,25 @@ const {
 } = require("../Controllers/station.controller");
 
 //* Middleware
-const { checkID } = require("../Middlewares/validations/Middleware");
-const { authentication } = require("../Middlewares/auth/authentication");
-const { authorize } = require("../Middlewares/auth/authorize");
+const { M_checkID } = require("../Middlewares/validations/validation");
+const { M_authentication } = require("../Middlewares/auth/authentication");
+const { M_authorize } = require("../Middlewares/auth/authorize");
 
-stationRouter.post("/", authentication, authorize, C_createStation);
+stationRouter.post("/", M_authentication, M_authorize, C_createStation);
 stationRouter.get("/", C_getStation);
-stationRouter.get(`/:id`, checkID, C_getStationDetail);
-stationRouter.put(`/:id`, authentication, authorize, checkID, C_updateStation);
+stationRouter.get(`/:id`, M_checkID, C_getStationDetail);
+stationRouter.put(
+  `/:id`,
+  M_authentication,
+  M_authorize,
+  M_checkID,
+  C_updateStation
+);
 stationRouter.delete(
   `/:id`,
-  authentication,
-  authorize,
-  checkID,
+  M_authentication,
+  M_authorize,
+  M_checkID,
   C_deleteStation
 );
 

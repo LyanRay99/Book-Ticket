@@ -1,11 +1,12 @@
 //* Library
 const bcrypt = require("bcrypt");
 const JWT = require("jsonwebtoken");
-const multer = require("multer");
-const upload = multer({ dest: "./uploads/avatar" });
 
 //* import model Users
 const { Users } = require("../models");
+
+//* constants
+const { url } = require("../Constants/constants");
 
 //* register
 const C_register = async (req, res) => {
@@ -58,9 +59,29 @@ const C_login = async (req, res) => {
   }
 };
 
-//* upload avatar
 const C_uploadAvatar = async (req, res, next) => {
-  return upload.single("avatar");
+  //* get user, file in request
+  const { user, file } = req;
+
+  //* create path of image
+  const urlImg = `${url}${file.path}`;
+
+  //* find user info
+  const userInfo = await Users.findOne({
+    where: {
+      email: user.email,
+    },
+  });
+
+  //* update & save avatar of user
+  userInfo.avatar = urlImg;
+  await userInfo.save();
+
+  res.send({
+    message: "feature upload avatar",
+    user: userInfo,
+    file: file,
+  });
 };
 
 module.exports = {

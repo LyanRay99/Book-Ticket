@@ -51,6 +51,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         defaultValue: "Client",
       },
+      avatar: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       sequelize,

@@ -1,3 +1,5 @@
+const url = "http://localhost:3000/";
+
 const cities = [
   "An Giang",
   "Bà Rịa - Vũng Tàu",
@@ -66,4 +68,5 @@ const cities = [
 
 module.exports = {
   cities,
+  url,
 };

@@ -11,7 +11,7 @@ const JWT = require("jsonwebtoken");
  * * Nếu đúng thì cho next()
  * * Sai thì báo lỗi
  */
-const authentication = async (req, res, next) => {
+const M_authentication = async (req, res, next) => {
   const token = req.header("token");
 
   try {
@@ -27,5 +27,5 @@ const authentication = async (req, res, next) => {
 };
 
 module.exports = {
-  authentication,
+  M_authentication,
 };

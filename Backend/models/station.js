@@ -1,7 +1,7 @@
 "use strict";
 
 const { Model } = require("sequelize");
-const { cities } = require("../Constants/cities.constant");
+const { cities } = require("../Constants/constants");
 
 module.exports = (sequelize, DataTypes) => {
   class Station extends Model {

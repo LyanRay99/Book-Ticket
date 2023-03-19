@@ -1,7 +1,7 @@
 /*
  * Role for user
  */
-const authorize = async (req, res, next) => {
+const M_authorize = async (req, res, next) => {
   const { user } = req;
   console.log(user);
 
@@ -14,5 +14,5 @@ const authorize = async (req, res, next) => {
 };
 
 module.exports = {
-  authorize,
+  M_authorize,
 };
