@@ -1,6 +1,8 @@
 //* Library
 const bcrypt = require("bcrypt");
 const JWT = require("jsonwebtoken");
+const multer = require("multer");
+const upload = multer({ dest: "./uploads/avatar" });
 
 //* import model Users
 const { Users } = require("../models");
@@ -55,7 +57,14 @@ const C_login = async (req, res) => {
     res.status(500).send({ message: "Not Found Email" });
   }
 };
+
+//* upload avatar
+const C_uploadAvatar = async (req, res, next) => {
+  return upload.single("avatar");
+};
+
 module.exports = {
   C_register,
   C_login,
+  C_uploadAvatar,
 };
