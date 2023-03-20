@@ -1,3 +1,22 @@
+/*
+ * Completed: Role:
+ * Create: Admin
+ * Read: All customer
+ * Read detail: All customer
+ * Update: Admin, User (change profile).
+ * Delete: Admin
+ * Upload: Admin, User
+ *
+ * Completed: Validations
+ * Create: Check fromStation & toStation duplicate (if they same, check startTime to decide next or not)
+ * Read: No
+ * Read detail: Check Id Exist
+ * Update: check authentication, check Id exist, check duplicate (If the same "name", check the id to decide next or not)
+ * Delete: check authentication, check Id exist
+ * Upload: check authentication, validate image
+ */
+
+//* Library
 const express = require("express");
 
 //* Model

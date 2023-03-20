@@ -7,11 +7,11 @@
  * Delete: Admin
  *
  * Completed: Validations
- * Create: Check duplicate
+ * Create: check authentication, Check duplicate
  * Read: No,
  * Read detail: Check Id Exist
- * Update: check Id exist, check duplicate (If the same "name", check the id to decide next or not)
- * Delete: check Id exist
+ * Update: check authentication, check Id exist, check duplicate (If the same "name", check the id to decide next or not)
+ * Delete: check authentication, check Id exist
  */
 
 //* Library

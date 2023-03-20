@@ -43,7 +43,7 @@ const checkStartTime = () => async (req, res, next) => {
     );
 
     if (checkStartTimeDifferent === startTime) {
-      res.status(500).send(`Trip existed`);
+      res.status(500).send(`Trip have existed`);
     } else {
       next();
     }
