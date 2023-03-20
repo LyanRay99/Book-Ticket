@@ -1,37 +1,34 @@
 const { Station } = require("../../models");
 
 //* check when create
-const M_checkNameDuplicate = async (req, res, next) => {
+const M_checkNameDuplicate = (Model) => async (req, res, next) => {
   const { name } = req.body;
 
-  const checkName = await Station.findOne({
+  const checkName = await Model.findOne({
     where: {
       name,
     },
   });
 
-  checkName ? res.status(500).send(`${name} station existed`) : next();
+  checkName ? res.status(500).send(`${name} existed`) : next();
 };
 
 //* check when update
-const M_checkNameDuplicateUpdate = async (req, res, next) => {
+const M_checkNameDuplicateUpdate = (Model) => async (req, res, next) => {
   const { id } = req.params;
   const { name } = req.body;
 
-  const checkName = await Station.findOne({
+  const checkName = await Model.findOne({
     where: {
       name,
     },
   });
-
-  console.log(typeof checkName.id);
-  console.log(typeof id);
 
   !checkName
     ? next()
     : checkName.id === Number(id)
     ? next()
-    : res.status(500).send(`${name} station existed`);
+    : res.status(500).send(`${name} existed`);
 };
 
 module.exports = {

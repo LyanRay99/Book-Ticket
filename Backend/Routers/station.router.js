@@ -45,7 +45,7 @@ stationRouter.post(
   "/",
   M_authentication,
   M_authorize,
-  M_checkNameDuplicate,
+  M_checkNameDuplicate(Station),
   C_createStation
 );
 stationRouter.get("/", C_getStation);
@@ -55,7 +55,7 @@ stationRouter.put(
   M_authentication,
   M_authorize,
   M_checkID(Station),
-  M_checkNameDuplicateUpdate,
+  M_checkNameDuplicateUpdate(Station),
   C_updateStation
 );
 stationRouter.delete(
