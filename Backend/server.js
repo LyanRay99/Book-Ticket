@@ -11,13 +11,13 @@ app.use(express.json());
 //* set static file
 //* trỏ đường dẫn từ file server.js (__dirname) => folder Public
 const publicPath = path.join(__dirname, "./Public");
-app.use(express.static(publicPath));
+app.use("/Public", express.static(publicPath));
 
 //* using router
 app.use("/api/v1", rootRouter);
 
 app.listen(port, async () => {
-  console.log(`server's runing in port ${port}`);
+  console.log(`server's running in port ${port}`);
 
   try {
     await sequelize.authenticate();
